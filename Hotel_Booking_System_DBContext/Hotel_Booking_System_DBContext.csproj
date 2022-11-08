@@ -50,6 +50,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DBHelper.cs" />
     <Compile Include="Interfaces\iBaseService.cs" />
     <Compile Include="Models\Booking_log.cs" />
     <Compile Include="Models\Client.cs" />

@@ -6,6 +6,17 @@ using System.Threading.Tasks;
 
 namespace Hotel_Booking_System_DBContext.Interfaces
 {
+    public interface IBase_Service<T>
+    {
+        T Entity { get; set; }
+        void AddMessageParameters();
+        void AddParameters();
+        void AddParameterID();
+        bool InsertOrUpdate();
+        bool Delete();
+        List<T> SelectAll();
+        T SelectByID();
+    }
     public interface iBaseService<T>
     {
         T Entity { get; set; }

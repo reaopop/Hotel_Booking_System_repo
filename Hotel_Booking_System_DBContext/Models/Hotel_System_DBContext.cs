@@ -16,7 +16,7 @@ namespace Hotel_Booking_System_DBContext.Models
         public virtual DbSet<Client> Clients { get; set; }
         public virtual DbSet<Floor> Floors { get; set; }
         public virtual DbSet<Hotel_Categories> Hotel_Categories { get; set; }
-        public virtual DbSet<Room_Types> Hotel_Info { get; set; }
+        public virtual DbSet<Hotel_Info> Hotel_Info { get; set; }
         public virtual DbSet<Room_Types> Room_Types { get; set; }
         public virtual DbSet<Room> Rooms { get; set; }
 
@@ -48,12 +48,21 @@ namespace Hotel_Booking_System_DBContext.Models
                 .WithOptional(e => e.Hotel_Categories)
                 .HasForeignKey(e => e.hotel_category_id);
 
-           
+            modelBuilder.Entity<Hotel_Info>()
+                .HasMany(e => e.Hotel_Categories)
+                .WithRequired(e => e.Hotel_Info)
+                .HasForeignKey(e => e.hotel_id)
+                .WillCascadeOnDelete(false);
+
             modelBuilder.Entity<Room_Types>()
                 .HasMany(e => e.Rooms)
                 .WithRequired(e => e.Room_Types)
                 .HasForeignKey(e => e.room_type_id)
                 .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<Room>()
+                .Property(e => e.day_price)
+                .HasPrecision(12, 2);
 
             modelBuilder.Entity<Room>()
                 .HasMany(e => e.Booking_log)

@@ -1,5 +1,6 @@
 ﻿using Hotel_Booking_System.Models;
 using Hotel_Booking_System_DBContext.Models;
+using Hotel_Booking_System_DBContext.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,31 +12,31 @@ namespace Hotel_Booking_System.Controllers
     public class LoginController : Controller
     {
         Hotel_System_DBContext db;
-        LoginView loginview;
+        Client loginview;
         // GET: Login
         public ActionResult Login()
         {
             db = new Hotel_System_DBContext();
-            loginview = new LoginView() { client = new Client() };
+            loginview = new Client();
             return View(loginview);
         }
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Login(Client objUser)
+        public ActionResult Login(Client client)
         {
-            if (ModelState.IsValid)
+            Client cln = new Client();
+            cln.Email = client.Email;
+            cln.Password = client.Password;
+            db = new Hotel_System_DBContext();
+            //Clients_Services clients_Services = new Clients_Services(new Client());
+            var obj = db.Clients.Where(a => a.Email.Equals(cln.Email) && a.Password.Equals(cln.Password)).FirstOrDefault();
+            if (obj != null)
             {
-               
-                    var obj = db.Clients.Where(a => a.Email.Equals(objUser.Email) && a.Password.Equals(objUser.Password)).FirstOrDefault();
-                    if (obj != null)
-                    {
-                        Session["UserID"] = obj.id.ToString();
-                        Session["Email"] = obj.Email.ToString();
-                        return RedirectToAction("User_Book" , "Home");
-                    }
+                Session["id"] = obj.id.ToString();
+                Session["Email"] = obj.Email.ToString();
+                return RedirectToAction("User_Book", "Home");
             }
-            return View(objUser);
+            return View(cln);
         }
     }
 }

@@ -35,7 +35,7 @@ namespace Hotel_Booking_System_DBContext.Services
             // Conditions
 
             // Results
-            DbContext.Hotel_Info.Remove(Entity);
+            DbContext.Room_Types.Remove(Entity);
             DbContext.SaveChanges();
             return true;
         }
@@ -44,9 +44,9 @@ namespace Hotel_Booking_System_DBContext.Services
         {
             // Conditions
             if (Entity.id == 0)
-                DbContext.Hotel_Info.Add(Entity);
+                DbContext.Room_Types.Add(Entity);
             else 
-                DbContext.Hotel_Info.Attach(Entity);
+                DbContext.Room_Types.Attach(Entity);
 
             // Results
             DbContext.SaveChanges();
@@ -55,12 +55,12 @@ namespace Hotel_Booking_System_DBContext.Services
 
         public IEnumerable<Room_Types> SelectAll()
         {
-            return DbContext.Hotel_Info.ToList() ;
+            return DbContext.Room_Types.ToList() ;
         }
 
         public Room_Types SelectByID()
         {
-            return DbContext.Hotel_Info.FirstOrDefault(x=> x.id == Entity.id) ?? new Room_Types();
+            return DbContext.Room_Types.FirstOrDefault(x=> x.id == Entity.id) ?? new Room_Types();
         }
         #endregion
     }
