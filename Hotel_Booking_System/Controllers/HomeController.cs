@@ -57,12 +57,12 @@ namespace Hotel_Booking_System.Controllers
 
             return View();
         }
-        public ActionResult Login()
-        {
-            ViewBag.Message = "Your booking page.";
+        //public ActionResult Login()
+        //{
+        //    ViewBag.Message = "Your booking page.";
 
-            return View();
-        }
+        //    return View();
+        //}
 
 
     }

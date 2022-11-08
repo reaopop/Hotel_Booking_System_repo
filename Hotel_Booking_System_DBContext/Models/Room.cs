@@ -25,6 +25,10 @@ namespace Hotel_Booking_System_DBContext.Models
         public int room_type_id { get; set; }
 
         public bool is_avaliable { get; set; }
+        public string description { get; set; }
+
+        [Required]
+        public decimal day_price { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Booking_log> Booking_log { get; set; }

@@ -1,5 +1,6 @@
-﻿
+﻿@model Hotel_Booking_System.Models.LoginView
 @{
+
     ViewBag.Title = "Login";
 }
 
@@ -23,14 +24,18 @@
         <div class="panel panel-default">
             <div class="panel-heading">plan your stay</div>
             <div class="panel-body">
-                <div class="form-group">
-                    <label for="email">Email</label>
-                    <input id="Text1" type="text" required class="form-control" data-bind="value: filters.arrival" />
-                    <label for="email">Password</label>
-                    <input id="Password1" type="password" class="form-control" data-bind="value: filters.arrival" />
+                <form action="~/Controllers/">
+                    <div class="form-group">
+                        <label onclick="" for="email">Email</label>
+                        <input id="Text1" type="text" required class="form-control" data-bind="value: filters.arrival" />
+                        <label for="email">Password</label>
+                        <input id="Password1" type="password" class="form-control" data-bind="value: filters.arrival" />
 
 
-                </div>
+                    </div>
+
+
+                </form>
 
 
 
