@@ -26,5 +26,44 @@ namespace Hotel_Booking_System.Controllers
 
             return View();
         }
+        public ActionResult Booking()
+        {
+            ViewBag.Message = "Your booking page.";
+
+            return View();
+        }
+       
+        public ActionResult Reservation_Results()
+        {
+            ViewBag.Message = "Your booking page.";
+
+            return View();
+        }
+        public ActionResult Rooms()
+        {
+            ViewBag.Message = "Your booking page.";
+
+            return View();
+        }
+        public ActionResult Booking_Report()
+        {
+            ViewBag.Message = "Your booking page.";
+
+            return View();
+        }
+        public ActionResult User_Book()
+        {
+            ViewBag.Message = "Your booking page.";
+
+            return View();
+        }
+        public ActionResult Login()
+        {
+            ViewBag.Message = "Your booking page.";
+
+            return View();
+        }
+
+
     }
 }
