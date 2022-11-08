@@ -1,4 +1,4 @@
-﻿
+﻿@model Hotel_Booking_System.Models.Booking_Report_View
 @{
     ViewBag.Title = "Booking_Report";
 }
@@ -32,16 +32,19 @@
             </tr>
         </thead>
         <tbody>
+            @foreach (var item in Model.booking_Report_List)
+            {
             <tr>
-                <td>ggggggg</td>
-                <td>Doe</td>
-                <td>john@example.com</td>
-                <td>Doe</td>
-                <td>john@example.com</td>
-                <td>john@example.com</td>
+                <td>@item.Client_Name</td>
+                <td>@item.Hotel_Category</td>
+                <td>@item.Room_no</td>
+                <td>@item.Room_Type</td>
+                <td>@item.Total_Price</td>
+                <td>@item.Total_Price_After_Discount</td>
+                <td>@item.Avaliability</td>
 
             </tr>
-
+            }
         </tbody>
     </table>
 

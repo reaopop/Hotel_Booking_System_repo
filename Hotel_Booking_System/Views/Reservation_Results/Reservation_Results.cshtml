@@ -1,4 +1,4 @@
-﻿
+﻿@model Hotel_Booking_System.Models.Reservation_Result_view
 @{
     ViewBag.Title = "Reservation_Results";
 }
@@ -24,12 +24,14 @@
             <div class="panel-heading">Search</div>
             <div class="panel-body">
                 <div class="form-group">
-                    <label for="email">Client Name</label>
-                    <select data-bind="value: filters.nights" class="form-control">
-                        <option></option>
-                    </select>
-
-
+                    @using (Html.BeginForm("Reservation_Results", "Reservation_Results", FormMethod.Post))
+                    {
+                        <label for="client">Client Name</label>
+                        @Html.DropDownListFor(model => model.client_id, new SelectList (Model.clients,"id", "client_name_en"), new {@for= "client", @class = "form-control" })
+                <button type="submit" value="submit" style="margin-top: 20px; background-color: lightseagreen; border-radius: 20px; width: 140px; padding: 10px;" class="btn btn-success pull-left align" data-bind="click: $root.reserve">
+                    Search
+                </button>
+                    }
                 </div>
 
 
@@ -60,17 +62,19 @@
                 </tr>
             </thead>
             <tbody>
+                @foreach (var item in Model.results)
+                {
                 <tr>
-                    <td>ggggggg</td>
-                    <td>Doe</td>
-                    <td>john@example.com</td>
-                    <td>Doe</td>
-                    <td>john@example.com</td>
-                    <td>john@example.com</td>
-                    <td>Doe</td>
-                    <td>john@example.com</td>
+                    <td>@item.client_name</td>
+                    <td>@item.check_in</td>
+                    <td>@item.check_out</td>
+                    <td>@item.hotel_category</td>
+                    <td>@item.floor</td>
+                    <td>@item.room_no</td>
+                    <td>@item.room_type</td>
+                    <td>@item.total_price</td>
                 </tr>
-
+                }
             </tbody>
         </table>
 
