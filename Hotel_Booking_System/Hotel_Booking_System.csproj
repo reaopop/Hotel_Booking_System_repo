@@ -149,6 +149,15 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Resource Include="images\b32d5dc553ee2097368bae13f83e93cf.jpg" />
+    <Resource Include="images\Best Hotel Website Designs.jpg" />
+    <Resource Include="images\download.jfif" />
+    <Resource Include="images\hotel-13341433.jpg" />
+    <Resource Include="images\image002-2.png" />
+    <Resource Include="images\images.jfif" />
+    <Resource Include="images\photo-1615460549969-36fa19521a4f.jfif" />
+    <Resource Include="images\STU_489585_Pool_1.jpg" />
+    <Resource Include="images\Welcomhotel-Tavleen-Chail_1200.jpg" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
