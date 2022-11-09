@@ -18,7 +18,7 @@ namespace Hotel_Booking_System.Controllers
             db = new Hotel_System_DBContext();
             booking = new BookingLog_View()
             {
-                clients = db.Clients.ToList(),
+                clients = db.Clients.Where(x => (Hotel_Booking_System_Lib.Static_Data.loginClient_id == 0 ? x.id != 0 : x.id == Hotel_Booking_System_Lib.Static_Data.loginClient_id)).ToList(),
                 categories = db.Hotel_Categories.ToList(),
                 Rooms = db.Rooms.ToList(),
                 room_types = db.Room_Types.ToList(),
@@ -50,10 +50,16 @@ namespace Hotel_Booking_System.Controllers
             });
 
             service.InsertOrUpdate();
-            book.clients = db.Clients.ToList();
-            book.categories = db.Hotel_Categories.ToList();
-            book.Rooms = db.Rooms.ToList();
-            book.room_types = db.Room_Types.ToList();
+            book = new BookingLog_View()
+            {
+                clients = db.Clients.Where(x => (Hotel_Booking_System_Lib.Static_Data.loginClient_id == 0 ? x.id != 0 : x.id == Hotel_Booking_System_Lib.Static_Data.loginClient_id)).ToList(),
+                categories = db.Hotel_Categories.ToList(),
+                Rooms = db.Rooms.ToList(),
+                room_types = db.Room_Types.ToList(),
+                check_in = DateTime.Now,
+                check_out = DateTime.Now
+
+            };
 
             return View(book);
         }

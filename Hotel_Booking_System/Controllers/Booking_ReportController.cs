@@ -17,7 +17,7 @@ namespace Hotel_Booking_System.Controllers
             db = new Hotel_System_DBContext();
             book_view = new Booking_Report_View()
             {
-                booking_Report_List = (from re in db.Booking_log.DefaultIfEmpty()
+                booking_Report_List = (from re in db.Booking_log.Where(x=> (Hotel_Booking_System_Lib.Static_Data.loginClient_id == 0?x.id != 0:x.client_id == Hotel_Booking_System_Lib.Static_Data.loginClient_id )).DefaultIfEmpty()
                                        from client in db.Clients.Where(x => x.id == re.client_id).DefaultIfEmpty()
                                        from room in db.Rooms.Where(x => x.id == re.room_id).DefaultIfEmpty()
                                        from room_type in db.Room_Types.Where(x => x.id == room.room_type_id).DefaultIfEmpty()
