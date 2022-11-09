@@ -1,5 +1,6 @@
 ﻿using Hotel_Booking_System.Models;
 using Hotel_Booking_System_DBContext.Models;
+using Hotel_Booking_System_DBContext.Services;
 using System.Linq;
 using System.Web.Mvc;
 
@@ -43,6 +44,18 @@ namespace Hotel_Booking_System.Controllers
         public ActionResult Rooms(Room_View room)
         {
             db = new Hotel_System_DBContext();
+            Room_services service = new Room_services(new Hotel_Booking_System_DBContext.Models.Room() 
+            {
+                day_price = room.day_price,
+                description = room.description,
+                floor_id = room.floor_id,
+                id = room.id,
+                is_avaliable = true,
+                room_no = room.room_no,
+                room_type_id = room.room_type_id,
+                
+            });
+            service.InsertOrUpdate();
 
             room.categories = db.Hotel_Categories.ToList();
             room.floors = db.Floors.ToList();
@@ -60,7 +73,6 @@ namespace Hotel_Booking_System.Controllers
                                   Room_Type = rt.name_type
                               }
                       ).ToList();
-
 
             return View(room);
         }

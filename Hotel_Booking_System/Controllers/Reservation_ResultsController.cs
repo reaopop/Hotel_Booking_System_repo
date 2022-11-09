@@ -31,7 +31,7 @@ namespace Hotel_Booking_System.Controllers
                        {
                            check_in = re.start_date.ToString(),
                            check_out = re.end_date.ToString(),
-                           client_name = client.client_name_ar,
+                           client_name = client.client_name_en,
                            floor = floor.floor_no,
                            hotel_category = hotel_category.location,
                            room_no = room.room_no,
@@ -45,7 +45,10 @@ namespace Hotel_Booking_System.Controllers
         [HttpPost]
         public ActionResult Reservation_Results(Reservation_Result_view results)
         {
-            results.results = (from re in db.Booking_log.Where(x=> x.client_id == results.client_id).DefaultIfEmpty()
+            db = new Hotel_System_DBContext();
+            results.clients = db.Clients.ToList();
+
+            results.results = (from re in db.Booking_log.Where(x => x.client_id == results.client_id.Value).DefaultIfEmpty()
                                from client in db.Clients.Where(x => x.id == re.client_id).DefaultIfEmpty()
                                from room in db.Rooms.Where(x => x.id == re.room_id).DefaultIfEmpty()
                                from room_type in db.Room_Types.Where(x => x.id == room.room_type_id).DefaultIfEmpty()
@@ -53,15 +56,16 @@ namespace Hotel_Booking_System.Controllers
                                from hotel_category in db.Hotel_Categories.Where(x => x.id == re.hotel_category_id).DefaultIfEmpty()
                                select new Reservation_Result
                                {
-                                   check_in = re.start_date.Date.ToString(),
-                                   check_out = re.end_date.Date.ToString(),
-                                   client_name = client.client_name_ar,
+                                   check_in = re.start_date.ToString(),
+                                   check_out = re.end_date.ToString(),
+                                   client_name = client.client_name_en,
                                    floor = floor.floor_no,
                                    hotel_category = hotel_category.location,
                                    room_no = room.room_no,
                                    room_type = room_type.name_type,
                                    total_price = re.amount
                                }).ToList();
+            
             return View(results);
         }
     }

@@ -16,6 +16,10 @@ namespace Hotel_Booking_System_DBContext.Models
 
         public decimal amount { get; set; }
 
+        public decimal discount_price { get; set; }
+
+        public decimal amount_after_discount { get; set; }
+
         public int booked_days { get; set; }
 
         public DateTime start_date { get; set; }

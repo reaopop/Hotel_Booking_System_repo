@@ -1,4 +1,4 @@
-﻿
+﻿@model Hotel_Booking_System.Models.BookingLog_View
 @{
     ViewBag.Title = "User_Book";
 }
@@ -18,27 +18,28 @@
 </style>
 <div class="row" id="searchpage" style="height:500px;">
     <div class="col-md-4">
-        <h2 style="font-family:Arial;font-style:italic;color:white;background-color:lightseagreen;border-radius:20px; width:140px; padding:10px; text-align:center;">Booking</h2>
+        @using (Html.BeginForm("User_Book", "User_Book", FormMethod.Post))
+        {
+            <h2 style="font-family:Arial;font-style:italic;color:white;background-color:lightseagreen;border-radius:20px; width:140px; padding:10px; text-align:center;">Booking</h2>
 
-        <div class="panel panel-default">
-            <div class="panel-heading">plan your stay</div>
-            <div class="panel-body">
+            <div class="panel panel-default">
+                <div class="panel-heading">plan your stay</div>
+                <div class="panel-body">
 
-                <div class="form-group">
-                    <label for="email"> ChecK In Date </label>
-                    <input type="date" class="form-control" data-bind="value: filters.arrival" placeholder="yyyy/mm/dd" />
+                    <div class="form-group">
+                        <label for="check_in"> ChecK In Date </label>
+                        @Html.EditorFor(model => model.check_in, new { htmlAttributes = new { @class = "form-control", @type = "date", @for = "check_in", @placeholder = "yyyy/mm/dd" } })
+
+                        <label for="check_out"> ChecK Out Date </label>
+                        @Html.EditorFor(model => model.check_out, new { htmlAttributes = new { @class = "form-control", @type = "date", @for = "check_out", @placeholder = "yyyy/mm/dd" } })
+                    </div>
 
 
-                    <label for="email"> ChecK Out Date </label>
-                    <input type="date" class="form-control" data-bind="value: filters.arrival" placeholder="yyyy/mm/dd" />
                 </div>
-
 
             </div>
 
-        </div>
-
-
+        }
 
 
 
@@ -46,22 +47,25 @@
         <div class="panel panel-default">
             <div class="panel-heading">Hotels,Rooms</div>
             <div class="panel-body" style="position:relative;">
-                <label for="email">Hotel Category</label>
-                <select style="width:220px; height:27px;" class="form-control">
-                    <option></option>
-                </select>
+                <label for="hotel">Hotel Category</label>
+                @Html.DropDownListFor(model => model.category_id, new SelectList(Model.categories, "id", "location"), new { @for = "hotel", @class = "form-control" })
 
-                <label for="email">Rooms</label>
-                <select style="width:220px; height:27px;" class="form-control">
-                    <option></option>
-                </select>
-                <br />
-                <label>Single</label>
-                <input id="Radio1" type="radio" name="r" value="Single" />
-                <label>Double</label>
-                <input id="Radio2" type="radio" name="r" value="Double" />
-                <label>Suit</label>
-                <input id="Radio3" type="radio" name="r" value="Suit" />
+
+                <label for="rooms">Rooms</label>
+                @Html.DropDownListFor(model => model.room_id, new SelectList(Model.Rooms, "id", "room_no"), new { @style = "width:220px; height:27px;", @for = "rooms", @class = "form-control" })
+
+                <label for="room_type">Room Type</label>
+                @Html.DropDownListFor(model => model.room_type, new SelectList(Model.room_types, "id", "name_type"), new { @style = "width:220px; height:27px;", @for = "room_type", @class = "form-control" })
+
+            </div>
+        </div>
+
+        <div class="panel panel-default">
+            <div class="panel-heading">Amount</div>
+            <div class="panel-body">
+                <label for="Amount">Amount</label>
+                @Html.EditorFor(model => model.amount, new { htmlAttributes = new { @class = "form-control", @type = "text", @for = "Amount", @id = "Text1", @placeholder = "Enter Price", @style = "width:220px; height:27px;" } })
+
             </div>
         </div>
 
@@ -72,14 +76,14 @@
         <div class="panel panel-default">
 
             <div class="panel-body">
+                @Html.EditorFor(model => model.isActive, new { htmlAttributes = new { @class = "pull-left", @type = "checkbox", @for = "Active" } })
+                <label class="pull-left" style="padding:0 5px 0 5px;" for="Active"> Is Active?</label>
 
-
-                <button type="button" style="margin-top: 20px; background-color: lightseagreen; border-radius: 20px; width: 140px; padding: 10px;" class="btn btn-success pull-left align" data-bind="click: $root.reserve">
+                <button type="submit" value="submit" style="margin-top: 20px; background-color: lightseagreen; border-radius: 20px; width: 140px; padding: 10px;" class="btn btn-success pull-left align" data-bind="click: $root.reserve">
                     Book now
                 </button>
 
             </div>
-
         </div>
 
 

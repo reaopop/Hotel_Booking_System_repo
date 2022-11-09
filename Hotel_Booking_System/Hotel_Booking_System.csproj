@@ -142,14 +142,18 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\BookingLogController.cs" />
     <Compile Include="Controllers\Booking_ReportController.cs" />
+    <Compile Include="Controllers\ClientsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\Reservation_ResultsController.cs" />
     <Compile Include="Controllers\RoomController.cs" />
+    <Compile Include="Controllers\User_BookController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\BookingLog_View.cs" />
     <Compile Include="Models\Booking_Report_View.cs" />
+    <Compile Include="Models\Client_View.cs" />
     <Compile Include="Models\LoginView.cs" />
     <Compile Include="Models\Reservation_Result.cs" />
     <Compile Include="Models\Room_View.cs" />
@@ -164,6 +168,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Views\Clients\Clients.cshtml" />
     <Resource Include="images\b32d5dc553ee2097368bae13f83e93cf.jpg" />
     <Resource Include="images\Best Hotel Website Designs.jpg" />
     <Resource Include="images\download.jfif" />
@@ -200,16 +205,15 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Home\Booking.cshtml" />
+    <Content Include="Views\BookingLog\BookingLog.cshtml" />
     <Content Include="Views\Room\Rooms.cshtml" />
     <Content Include="Views\Reservation_Results\Reservation_Results.cshtml" />
     <Content Include="Views\Booking_Report\Booking_Report.cshtml" />
-    <Content Include="Views\Home\User_Book.cshtml" />
+    <Content Include="Views\User_Book\User_Book.cshtml" />
     <Content Include="Views\Login\Login.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\BookingLog\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

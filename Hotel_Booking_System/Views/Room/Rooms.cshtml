@@ -3,9 +3,6 @@
     ViewBag.Title = "Rooms";
 }
 
-
-
-
 <style>
     .price::before {
         content: '€'
@@ -57,20 +54,6 @@
 
         </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     </div>
 
     <div class="col-md-8">
@@ -87,17 +70,17 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
                     @foreach (var item in Model.rooms)
                     {
+                <tr>
                     <td>@item.Hotel_category</td>
                     <td>@item.Room_No</td>
                     <td>@item.Floor</td>
                     <td>@item.Room_Type</td>
                     <td>@item.Discption</td>
 
-                    }
                 </tr>
+                    }
 
             </tbody>
         </table>

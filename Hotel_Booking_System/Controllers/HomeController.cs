@@ -26,12 +26,7 @@ namespace Hotel_Booking_System.Controllers
 
             return View();
         }
-        public ActionResult Booking()
-        {
-            ViewBag.Message = "Your booking page.";
-
-            return View();
-        }
+     
        
         public ActionResult Reservation_Results()
         {

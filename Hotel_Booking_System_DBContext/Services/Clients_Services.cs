@@ -6,7 +6,7 @@ using System.Linq;
 
 namespace Hotel_Booking_System_DBContext.Services
 {
-    class Clients_Services : iBaseService<Client>
+    public class Clients_Services : iBaseService<Client>
     {
         public Client Entity { get; set; }
         public Hotel_System_DBContext DbContext { get; set; }

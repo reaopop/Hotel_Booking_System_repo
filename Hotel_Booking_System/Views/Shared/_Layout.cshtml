@@ -8,6 +8,8 @@
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
+    @if (Hotel_Booking_System_Lib.Static_Data.Visiblty == true)
+    {
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
@@ -23,16 +25,25 @@
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
                     <li>@Html.ActionLink("About", "About", "Home")</li>
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                    <li>@Html.ActionLink("Booking", "Booking", "Home")</li>
-                    <li>@Html.ActionLink("Rooms", "Rooms", "Room")</li>
-                    <li>@Html.ActionLink("Reservation_Results", "Reservation_Results", "Reservation_Results")</li>
-                    <li>@Html.ActionLink("Booking_Report", "Booking_Report", "Booking_Report")</li>
-                    <li>@Html.ActionLink("User_Book", "User_Book", "Home")</li>
-                    <li>@Html.ActionLink("Login", "Login", "Login")</li>
-                </ul>
+                    @if (Hotel_Booking_System_Lib.Static_Data.IsAdmin == true)
+                    {
+                        <li>@Html.ActionLink("Booking Log", "BookingLog", "BookingLog")</li>
+                        <li>@Html.ActionLink("Rooms", "Rooms", "Room")</li>
+                        <li>@Html.ActionLink("Clients", "Clients", "Clients")</li>
+                    }
+
+                    <li>@Html.ActionLink("Reservation Results", "Reservation_Results", "Reservation_Results")</li>
+                    <li>@Html.ActionLink("Booking Report", "Booking_Report", "Booking_Report")</li>
+                    @if (Hotel_Booking_System_Lib.Static_Data.IsAdmin == false)
+                    {
+                        <li>@Html.ActionLink("User Book", "User_Book", "User_Book")</li>
+                    }
+                    <li>@Html.ActionLink("Logout", "Login", "Login")</li>
+                    </ul>
             </div>
         </div>
     </div>
+    }
     <div class="container body-content">
         @RenderBody()
         <hr />

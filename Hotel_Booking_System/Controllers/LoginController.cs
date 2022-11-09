@@ -16,6 +16,8 @@ namespace Hotel_Booking_System.Controllers
         // GET: Login
         public ActionResult Login()
         {
+            Hotel_Booking_System_Lib.Static_Data.Visiblty = false;
+            Hotel_Booking_System_Lib.Static_Data.IsAdmin = false;
             db = new Hotel_System_DBContext();
             loginview = new Client();
             return View(loginview);
@@ -27,6 +29,14 @@ namespace Hotel_Booking_System.Controllers
             Client cln = new Client();
             cln.Email = client.Email;
             cln.Password = client.Password;
+            if(cln.Email == "admin" && cln.Password == "admin")
+            {
+                Hotel_Booking_System_Lib.Static_Data.Visiblty = true;
+                Hotel_Booking_System_Lib.Static_Data.loginClient_id = 0;
+                Hotel_Booking_System_Lib.Static_Data.IsAdmin = true;
+
+                return RedirectToAction("BookingLog", "BookingLog");
+            }
             db = new Hotel_System_DBContext();
             //Clients_Services clients_Services = new Clients_Services(new Client());
             var obj = db.Clients.Where(a => a.Email.Equals(cln.Email) && a.Password.Equals(cln.Password)).FirstOrDefault();
@@ -34,7 +44,11 @@ namespace Hotel_Booking_System.Controllers
             {
                 Session["id"] = obj.id.ToString();
                 Session["Email"] = obj.Email.ToString();
-                return RedirectToAction("User_Book", "Home");
+                Hotel_Booking_System_Lib.Static_Data.loginClient_id = obj.id;
+                Hotel_Booking_System_Lib.Static_Data.Visiblty = true;
+                Hotel_Booking_System_Lib.Static_Data.IsAdmin = false;
+
+                return RedirectToAction("User_Book", "User_Book");
             }
             return View(cln);
         }
