@@ -22,6 +22,7 @@ namespace Hotel_Booking_System.Models
         public bool double_ { get; set; }
         public bool suit { get; set; }
         public bool isActive { get; set; }
+        public int Success { get; set; }
         public IEnumerable<Client> clients { get; set; }
         public IEnumerable<Hotel_Categories> categories { get; set; }
         public IEnumerable<Room> Rooms { get; set; }

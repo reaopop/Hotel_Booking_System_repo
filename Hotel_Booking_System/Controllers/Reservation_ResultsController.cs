@@ -19,7 +19,7 @@ namespace Hotel_Booking_System.Controllers
             db = new Hotel_System_DBContext();
             results = new Reservation_Result_view();
 
-            results.clients = db.Clients.ToList();
+            results.clients = db.Clients.Where(x => (Hotel_Booking_System_Lib.Static_Data.loginClient_id == 0 ? x.id != 0 : x.id == Hotel_Booking_System_Lib.Static_Data.loginClient_id)).ToList();
 
             results.results = (from re in db.Booking_log.Where(x => (Hotel_Booking_System_Lib.Static_Data.loginClient_id == 0 ? x.id != 0 :x.client_id == Hotel_Booking_System_Lib.Static_Data.loginClient_id)).DefaultIfEmpty()
                        from client in db.Clients.Where(x=> x.id == re.client_id).DefaultIfEmpty()

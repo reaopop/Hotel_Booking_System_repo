@@ -22,35 +22,43 @@
             <div class="panel-body">
                 @using (Html.BeginForm("Rooms", "Room", FormMethod.Post))
                 {
-                <div class="form-group">
-                    <label for="room_no"> Room No </label>
-                    @Html.EditorFor(model => model.room_no, new { htmlAttributes = new { @for = "room_no", @class = "form-control", @type = "text", @placeholder = "Enter Room No" } })
+                    <div class="form-group">
+                        <label for="room_no"> Room No </label>
+                        @Html.EditorFor(model => model.room_no, new { htmlAttributes = new { @for = "room_no", @class = "form-control", @type = "text", @placeholder = "Enter Room No" } })
 
 
-                    <label for="floor"> Floor </label>
-                    @Html.DropDownListFor(model => model.floor_id, new SelectList(Model.floors, "id", "floor_no"), new { @for = "floor", @class = "form-control" })
+                        <label for="floor"> Floor </label>
+                        @Html.DropDownListFor(model => model.floor_id, new SelectList(Model.floors, "id", "floor_no"), new { @for = "floor", @class = "form-control" })
 
-                    <label for="room_type"> Room Type </label>
-                    @Html.DropDownListFor(model => model.room_type_id, new SelectList(Model.room_types, "id", "name_type"), new { @for = "room_type", @class = "form-control" })
+                        <label for="room_type"> Room Type </label>
+                        @Html.DropDownListFor(model => model.room_type_id, new SelectList(Model.room_types, "id", "name_type"), new { @for = "room_type", @class = "form-control" })
 
-                    <label for="day_price">Day Price</label>
-                    @Html.EditorFor(model => model.day_price, new { htmlAttributes = new { @for = "day_price", @class = "form-control", @type = "number", @placeholder = "Enter Day price" } })
+                        <label for="day_price">Day Price</label>
+                        @Html.EditorFor(model => model.day_price, new { htmlAttributes = new { @for = "day_price", @class = "form-control", @type = "number", @placeholder = "Enter Day price" } })
 
-                    <div class="panel-heading"> Hotel Description</div>
-                    <div class="panel-body" style="position:relative;">
-                        <label for="desc">Description</label>
-                        @Html.TextAreaFor(model => model.description, new { htmlAttributes = new {  @class = "form-control", @placeholder = "Enter Day price" , @for = "desc" } })
+                        <div class="panel-heading"> Hotel Description</div>
+                        <div class="panel-body" style="position:relative;">
+                            <label for="desc">Description</label>
+                            @Html.TextAreaFor(model => model.description, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter Day price", @for = "desc" } })
+
+                        </div>
+                        <button type="submit" value="submit" style="margin-top: 20px; background-color: lightseagreen; border-radius: 20px; width: 140px; padding: 10px;" class="btn btn-success pull-left align" data-bind="click: $root.reserve">
+                            Add
+                        </button>
+
 
                     </div>
-                    <button type="submit" value="submit" style="margin-top: 20px; background-color: lightseagreen; border-radius: 20px; width: 140px; padding: 10px;" class="btn btn-success pull-left align" data-bind="click: $root.reserve">
-                        Add
-                    </button>
-
-
-                </div>
 
                 }
-                </div>
+                @if (Model.Success == 1)
+                {
+
+
+                    <div class="alert alert-success" role="alert">
+                        Save Is Success !
+                    </div>
+                }
+            </div>
 
         </div>
 

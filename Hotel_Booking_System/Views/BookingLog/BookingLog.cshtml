@@ -28,14 +28,14 @@
                     <div class="form-group">
                         <label for="client">Client Name</label>
                         @Html.DropDownListFor(model => model.client_id, new SelectList(Model.clients, "id", "client_name_en"), new { @for = "client", @class = "form-control" })
-                        <input type="button" value="+" onclick="location.href='@Url.Action("Clients", "Clients")'" for = "client", class = "col-lg-2 form-control"/>
+                        <input type="button" value="+" onclick="location.href='@Url.Action("Clients", "Clients")'" for="client" , class="col-lg-2 form-control" />
                     </div>
                     <div class="form-group">
                         <label for="check_in"> ChecK In Date </label>
-                        @Html.EditorFor(model => model.check_in, new { htmlAttributes = new { @class = "form-control", @type = "date" , @for="check_in",@placeholder="yyyy/mm/dd" } })
+                        @Html.EditorFor(model => model.check_in, new { htmlAttributes = new { @class = "form-control", @type = "date", @for = "check_in", @placeholder = "yyyy/mm/dd" } })
 
                         <label for="check_out"> ChecK Out Date </label>
-                        @Html.EditorFor(model => model.check_out, new { htmlAttributes = new { @class = "form-control", @type = "date" , @for="check_out" ,@placeholder="yyyy/mm/dd" } })
+                        @Html.EditorFor(model => model.check_out, new { htmlAttributes = new { @class = "form-control", @type = "date", @for = "check_out", @placeholder = "yyyy/mm/dd" } })
                     </div>
 
 
@@ -57,7 +57,7 @@
 
                     <label for="rooms">Rooms</label>
                     @Html.DropDownListFor(model => model.room_id, new SelectList(Model.Rooms, "id", "room_no"), new { @style = "width:220px; height:27px;", @for = "rooms", @class = "form-control" })
-                    
+
                     <label for="room_type">Room Type</label>
                     @Html.DropDownListFor(model => model.room_type, new SelectList(Model.room_types, "id", "name_type"), new { @style = "width:220px; height:27px;", @for = "room_type", @class = "form-control" })
 
@@ -68,8 +68,8 @@
                 <div class="panel-heading">Amount</div>
                 <div class="panel-body">
                     <label for="Amount">Amount</label>
-                    @Html.EditorFor(model => model.amount, new { htmlAttributes = new { @class = "form-control", @type = "text", @for = "Amount" ,@id="Text1" , @placeholder="Enter Price", @style="width:220px; height:27px;"} })
-                    @if(Model.discount != "")
+                    @Html.EditorFor(model => model.amount, new { htmlAttributes = new { @class = "form-control", @type = "text", @for = "Amount", @id = "Text1", @placeholder = "Enter Price", @style = "width:220px; height:27px;" } })
+                    @if (Model.discount != "")
                     {
                         <label style="font-size:large;">95%</label>
                     }
@@ -82,7 +82,7 @@
             <div class="panel panel-default">
 
                 <div class="panel-body">
-                    @Html.EditorFor(model => model.isActive, new { htmlAttributes = new { @class = "pull-left", @type = "checkbox", @for = "Active"} })
+                    @Html.EditorFor(model => model.isActive, new { htmlAttributes = new { @class = "pull-left", @type = "checkbox", @for = "Active" } })
                     <label class="pull-left" style="padding:0 5px 0 5px;" for="Active"> Is Active?</label>
 
                     <button type="submit" value="submit" style="margin-top: 20px; background-color: lightseagreen; border-radius: 20px; width: 140px; padding: 10px;" class="btn btn-success pull-left align" data-bind="click: $root.reserve">
@@ -92,7 +92,23 @@
                 </div>
             </div>
         }
-        </div>
+        @if (Model.Success == 1)
+        {
+
+
+            <div class="alert alert-success" role="alert">
+                Save Is Success
+            </div>
+        }
+        @if (Model.Success == 2)
+        {
+
+
+            <div class="alert alert-danger" role="alert">
+                Password Not Equal Confirm Password !
+            </div>
+        }
+    </div>
 
     <div class="col-md-8">
 

@@ -1,4 +1,4 @@
-﻿@model Hotel_Booking_System_DBContext.Models.Client
+﻿@model Hotel_Booking_System.Models.Client_View
 @{
 
     ViewBag.Title = "Login";
@@ -24,19 +24,35 @@
         <div class="panel panel-default">
             <div class="panel-heading">plan your stay</div>
             <div class="panel-body">
-                @using (Html.BeginForm("Login", "Login", FormMethod.Post))
+                @using (Html.BeginForm("Register", "Register", FormMethod.Post))
                 {
                     <div class="form-group">
                         <div>
+                            <label onclick="" for="client_name_en">Full Name</label>
+                            @Html.EditorFor(model => model.client_name_en, new { htmlAttributes = new { @class = "form-control", @type = "text" } })
+                            @*@Html.ValidationMessageFor(model => model.client.Email, "", new { @class = "form-control" })*@
+                        </div>
+
+                        <div>
                             <label onclick="" for="email">Email</label>
                             @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control", @type = "text" } })
+                            @*@Html.ValidationMessageFor(model => model.client.Email, "", new { @class = "form-control" })*@
                         </div>
 
                         <div>
                             <label onclick="" for="email">Password</label>
                             @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control", @type = "password" } })
+                            @*@Html.ValidationMessageFor(model => model.client.Password, "", new { @class = "form-control" })*@
                         </div>
-                      
+
+                        <div>
+                            <label onclick="" for="email">Confirm Password</label>
+                            @Html.EditorFor(model => model.Confirm_Password, new { htmlAttributes = new { @class = "form-control", @type = "password" } })
+                            @*@Html.ValidationMessageFor(model => model.client.Password, "", new { @class = "form-control" })*@
+                        </div>
+                        @*<label for="password">Password</label>
+                <input id="Password1" type="password" class="form-control" data-bind="value: filters.arrival" />*@
+
 
                     </div>
 
@@ -45,17 +61,18 @@
                         <div class="panel-body">
 
                             <button type="submit" value="submit" style="margin-top: 20px; background-color: lightseagreen; border-radius: 20px; width: 140px; padding: 10px;" class="btn btn-success pull-left align" data-bind="click: $root.reserve">
-                                Login
-                            </button>
-                            <button type="button" style="margin-top: 20px; background-color: lightseagreen; border-radius: 20px; width: 140px; padding: 10px;" class="btn btn-success pull-left align" data-bind="click: $root.reserve">
-                                @Html.ActionLink("Register", "Register", "Register")
+                                Register
                             </button>
                         </div>
 
                     </div>
                 }
-
-
+                @if (Model.password_not_confirm == true)
+                {
+                <div class="alert alert-danger" role="alert">
+                    Password Not Equal Confirm Password !
+                </div>
+                }
 
             </div>
 
@@ -72,7 +89,7 @@
 
 
 
-      
+
 
 
 

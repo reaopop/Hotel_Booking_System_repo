@@ -20,6 +20,7 @@ namespace Hotel_Booking_System.Controllers
                 floors = db.Floors.ToList(),
                 //room = new Hotel_Booking_System_DBContext.Models.Room(),
                 room_types = db.Room_Types.ToList(),
+                Success = 0,
                 rooms = (from rm in db.Rooms.DefaultIfEmpty()
                         from fr in db.Floors.Where(x=> x.id == rm.floor_id).DefaultIfEmpty()
                         from hc in db.Hotel_Categories.Where(x => x.id == fr.hotel_category_id).DefaultIfEmpty()
@@ -56,7 +57,7 @@ namespace Hotel_Booking_System.Controllers
                 
             });
             service.InsertOrUpdate();
-
+            room.Success = 1;
             room.categories = db.Hotel_Categories.ToList();
             room.floors = db.Floors.ToList();
             room.room_types = db.Room_Types.ToList();

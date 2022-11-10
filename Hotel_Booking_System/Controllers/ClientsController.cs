@@ -21,6 +21,7 @@ namespace Hotel_Booking_System.Controllers
             client = new Client_View()
             {
                 clients = db.Clients.ToList(),
+                Success = 0,
             };
 
 
@@ -45,7 +46,7 @@ namespace Hotel_Booking_System.Controllers
 
             });
             service.InsertOrUpdate();
-
+            client.Success = 1;
             client.clients = db.Clients.ToList();
            
 

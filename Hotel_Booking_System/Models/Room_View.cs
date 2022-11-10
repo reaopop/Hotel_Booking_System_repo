@@ -23,6 +23,7 @@ namespace Hotel_Booking_System.Models
         public string room_no { get; set; }
         public decimal day_price { get; set; }
         public string description { get; set; }
+        public int Success { get; set; }
 
         public IEnumerable<Room_List> rooms { get; set; }
     }

@@ -24,7 +24,8 @@ namespace Hotel_Booking_System.Controllers
                 Rooms = db.Rooms.ToList(),
                 room_types = db.Room_Types.ToList(),
                 check_in = DateTime.Now,
-                check_out = DateTime.Now
+                check_out = DateTime.Now,
+                Success = 0,
                 
             };
             return View(booking);
@@ -60,6 +61,7 @@ namespace Hotel_Booking_System.Controllers
             book.categories = db.Hotel_Categories.ToList();
             book.Rooms = db.Rooms.ToList();
             book.room_types = db.Room_Types.ToList();
+            book.Success = 1;
 
             return View(book);
         }

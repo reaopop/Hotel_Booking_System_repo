@@ -145,6 +145,7 @@
     <Compile Include="Controllers\ClientsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\RegisterController.cs" />
     <Compile Include="Controllers\Reservation_ResultsController.cs" />
     <Compile Include="Controllers\RoomController.cs" />
     <Compile Include="Controllers\User_BookController.cs" />
@@ -169,6 +170,7 @@
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Views\Clients\Clients.cshtml" />
+    <Content Include="Views\Register\Register.cshtml" />
     <Resource Include="images\b32d5dc553ee2097368bae13f83e93cf.jpg" />
     <Resource Include="images\Best Hotel Website Designs.jpg" />
     <Resource Include="images\download.jfif" />
